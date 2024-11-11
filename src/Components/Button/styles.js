@@ -5,7 +5,7 @@ export const BtnContainer = styled.button`
     border-radius: 22px;
     position: relative;
 
-    color: #FFFF;
+    color: #FFF8;
     padding: 2px 12px;
     min-width: 120px;
     width: 100%;
