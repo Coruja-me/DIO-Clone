@@ -3,8 +3,15 @@ import { Container, Title, Column, CriarTxt, EsqueciTxt, Row, SubitleLogin, Titl
 import { Button } from "../../Components/Button";
 import { Input } from "../../Components/Input";
 import { MdEmail, MdLock } from "react-icons/md"
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+    const navigate = useNavigate();
+
+    const handleClickSignIn = () => {
+        navigate('/Feed')
+    }
+
     return ( <>
       <Header />
       <Container>
@@ -20,7 +27,7 @@ const Login = () => {
                 <form>
                     <Input placeholder="Email" leftIcon={<MdEmail />}/>
                     <Input placeholder="Senha" type="password" leftIcon={<MdLock />}/>
-                    <Button title="Entrar" variant="secondary" />
+                    <Button title="Entrar" variant="secondary" onClick={handleClickSignIn} type="button" />
                 </form>
                 <Row>
                     <EsqueciTxt>Esqueci minha senha</EsqueciTxt>

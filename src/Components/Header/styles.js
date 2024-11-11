@@ -44,7 +44,7 @@ export const SearchInput = styled.div`
 export const Menu = styled.a`
     font-family: 'Open Sans';
     font-style: normal;
-    font-size: 12px;
+    font-size: 18px;
     line-height: 25px;
     color: white;
     margin-right: 12px;
@@ -53,7 +53,7 @@ export const Menu = styled.a`
 export const MenuRight = styled.a`
     font-family: 'Open Sans';
     font-style: normal;
-    font-size: 12px;
+    font-size: 18px;
     line-height: 25px;
     color: white;
     margin-right: 12px;
@@ -68,6 +68,7 @@ export const UserPic = styled.img`
 export const Input = styled.input`
     background: transparent;
     flex: 1;
+    height: 100%;
     border: 0;
     color: #fff;
 `

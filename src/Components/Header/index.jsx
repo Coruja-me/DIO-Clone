@@ -14,22 +14,28 @@ import {
 } from "./styles"
 import { Button } from '../Button'
 
-const Header = () => {
+const Header = ({auth}) => {
   return (
     <Wrapper>
         <HeaderContainer>
             <Row>
                 <Logo src={logo}/>
-                <SearchInput>
-                    <Input placeholder='Buscar...' />
-                </SearchInput>
-                <Menu>Live Code</Menu>
-                <Menu>Global</Menu>
+                {auth ? (<>
+                    <SearchInput>
+                        <Input placeholder='Buscar...' />
+                    </SearchInput>
+                    <Menu>Live Code</Menu>
+                    <Menu>Global</Menu>
+                </>) : null}
             </Row>
             <Row>
+            {auth ? (
+                <UserPic src='https://avatars.githubusercontent.com/u/178964215?v=4' />
+            ) : (<>
                 <MenuRight href='#'>Home</MenuRight>
                 <Button title="Entrar" />
                 <Button title="Cadastrar" />
+            </>)}
             </Row>
         </HeaderContainer>
     </Wrapper>
