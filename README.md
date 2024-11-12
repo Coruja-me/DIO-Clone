@@ -16,7 +16,3 @@ Este projeto é um clone do site da DIO (Digital Innovation One) desenvolvido ut
 - **Tela Inicial**: Apresenta uma visão geral com informações principais.
 - **Feed**: Exibe postagens e atualizações recentes.
 
-## Estrutura do Projeto
-
-A estrutura do projeto é organizada da seguinte maneira:
-
