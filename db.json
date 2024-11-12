@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Cauã",
+      "email": "caua@teste.com",
+      "senha": "1234"
+    },
+    {
+      "id": "39cc",
+      "name": "Cauã Vieira Alves",
+      "email": "cauavalves@gmail.com",
+      "senha": "fh8LjJJgymRfWZh"
+    },
+    {
+      "id": "8396",
+      "name": "Cauã Vieira",
+      "email": "cauaalves2005@hotmail.co",
+      "senha": "asdfghjkl"
+    }
+  ]
+}

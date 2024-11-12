@@ -58,6 +58,10 @@ export const MenuRight = styled.a`
     color: white;
     margin-right: 12px;
     text-decoration: none;
+
+    &:hover{
+        opacity: 0.4;
+    }
 `
 export const UserPic = styled.img`
     width: 32px;

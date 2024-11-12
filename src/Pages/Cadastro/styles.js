@@ -38,7 +38,7 @@ export const Title = styled.h2`
 
     color: #fff;
 `
-export const TitleLogin = styled.h3`
+export const TitleCadastro = styled.h3`
     font-family: "Open Sans";
     font-style: normal;
     font-weight: 700;
@@ -46,32 +46,32 @@ export const TitleLogin = styled.h3`
     margin-bottom: 20px;
     line-height: 44px;
 `
-export const SubitleLogin = styled.h4`
+export const SubitleCadastro = styled.h4`
     font-family: "Open Sans";
     font-style: normal;
     font-weight: 400;
     margin-bottom: 35px;
     line-height: 22px;
 `
-export const EsqueciTxt = styled.p`
-    font-family: "Open Sans";
-    font-style: normal;
+export const TxtTermos = styled.p`
+    font-family: Open Sans;
+    font-size: 18px;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
-
-    color: #E5E044;
+    line-height: 24px;
+    margin: 12px 0;
 `
-export const CriarTxt = styled.a`
+
+export const LoginTxt = styled.span`
     font-family: "Open Sans";
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
     font-size: 14px;
-    line-height: 18px;
-
-    color: #E23dd7;
-    text-decoration: none;
-    &:hover{
+    line-height: 19px;
+    a{
+        color: #23DF81;
+        text-decoration: none;
+    }
+    a:hover{
         opacity: 0.8;
     }
 `

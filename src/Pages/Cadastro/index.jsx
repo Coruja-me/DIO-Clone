@@ -1,5 +1,5 @@
 import { Header } from "../../Components/Header";
-import { Container, Title, Column, CriarTxt, EsqueciTxt, Row, SubitleLogin, TitleLogin, Wrapper } from "./styles"
+import { Container, Title, Column, SubitleCadastro, TitleCadastro, Wrapper, LoginTxt, TxtTermos } from "./styles"
 import { Button } from "../../Components/Button";
 import { Input } from "../../Components/Input";
 import { MdEmail, MdLock } from "react-icons/md"
@@ -8,13 +8,16 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from "yup"
 import { api } from "../../Services/api";
+import { BiUser } from "react-icons/bi";
 
 const schema = yup.object({
+    name: yup.string().required('Nome requirido!'),
     email: yup.string().email('Email inválido!').required('Email requirido!'),
-    senha: yup.string().min(3, 'Senha curta, deve ser no mínimo 3 caracteres').required('Senha requirida!')
+    senha: yup.string().min(3, 'Senha curta, deve ser no mínimo 3 caracteres').required('Senha requirida!'),
+    senhaVerif: yup.string().oneOf([yup.ref('senha'), null], 'As senhas precisam ser iguais!').required('Confirmação de senha requirida!')
 }).required()
 
-const Login = () => {
+const Cadastro = () => {
     const navigate = useNavigate();
 
     const { control, handleSubmit, formState: { errors } } = useForm({
@@ -24,11 +27,17 @@ const Login = () => {
 
     const onSubmit = async fData => {
         try{
-            const {data} = await api.get(`users?email=${fData.email}&senha=${fData.senha}`)
-            if(data.length === 1){
-                navigate('/Feed')
-            } else {
-                alert('Email e/ou senha inválidos!')
+            if(fData.senhaVerif === fData.senha){
+                await api.post(`users`, {
+                    name: fData.name,
+                    email: fData.email,
+                    senha: fData.senha
+                })
+                alert("Cadastro realizado com sucesso!")
+                navigate('/Login')
+            }
+            else{
+                alert("As senhas não coincidem!")
             }
         }catch{
             alert("Ocorreu um erro, tente novamente")
@@ -44,22 +53,26 @@ const Login = () => {
         </Column>
         <Column>
             <Wrapper>
-                <TitleLogin>Faça seu cadastro</TitleLogin>
-                <SubitleLogin>Faça seu login e make the change._</SubitleLogin>
+                <TitleCadastro>Faça seu cadastro</TitleCadastro>
+                <SubitleCadastro>Faça seu Cadastro e make the change._</SubitleCadastro>
                 <form onSubmit={handleSubmit(onSubmit)}>
+                    <Input name="name" errMsg={errors?.name?.message} control={control} placeholder="Nome Completo" leftIcon={<BiUser />}/>
                     <Input name="email" errMsg={errors?.email?.message} control={control} placeholder="Email" leftIcon={<MdEmail />}/>
                     <Input name="senha" errMsg={errors?.senha?.message} control={control} placeholder="Senha" type="password" leftIcon={<MdLock />}/>
+                    <Input name="senhaVerif" errMsg={errors?.senhaVerif?.message} control={control} placeholder="Confirme a Senha" type="password" leftIcon={<MdLock />}/>
                     <Button title="Entrar" variant="secondary" type="submit" />
                 </form>
-                <Row>
-                    <EsqueciTxt>Esqueci minha senha</EsqueciTxt>
-                    <CriarTxt href="../Cadastro">Criar conta</CriarTxt>
-                </Row>
+                <Column>
+                    <TxtTermos>Ao clicar em "criar minha conta grátis", declaro que aceito as Políticas de Privacidade e os Termos de Uso da DIO.</TxtTermos>
+                    <LoginTxt>
+                        Já tenho conta. <a href="/Login">Fazer login</a>
+                    </LoginTxt>
+                </Column>
             </Wrapper>
         </Column>
       </Container>
     </>);
   }
   
-  export {Login};
+  export {Cadastro};
   
