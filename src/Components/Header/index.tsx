@@ -1,10 +1,9 @@
 import React from 'react'
-import logo from "../../Assets/logo.png"
+import logo from "../../Assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import {
     HeaderContainer,
     Row,
-    Column,
     Wrapper,
     SearchInput,
     Menu,
@@ -14,8 +13,9 @@ import {
     Logo
 } from "./styles"
 import { Button } from '../Button'
+import { iHeader } from './types';
 
-const Header = ({auth}) => {
+const Header = ({auth} : iHeader) => {
     const navigate = useNavigate();
 
     const handleCadastro = () => {

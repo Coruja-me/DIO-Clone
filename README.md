@@ -6,6 +6,7 @@ Este projeto é um clone do site da DIO (Digital Innovation One) desenvolvido ut
 
 - React
 - JavaScript
+- TypeScript
 - HTML
 - CSS
 

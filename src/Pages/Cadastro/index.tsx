@@ -9,23 +9,24 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from "yup"
 import { api } from "../../Services/api";
 import { BiUser } from "react-icons/bi";
+import { iFData } from "./types";
 
 const schema = yup.object({
-    name: yup.string().required('Nome requirido!'),
-    email: yup.string().email('Email inválido!').required('Email requirido!'),
-    senha: yup.string().min(3, 'Senha curta, deve ser no mínimo 3 caracteres').required('Senha requirida!'),
-    senhaVerif: yup.string().oneOf([yup.ref('senha'), null], 'As senhas precisam ser iguais!').required('Confirmação de senha requirida!')
+    name: yup.string().nullable().required('Nome requirido!'),
+    email: yup.string().nullable().email('Email inválido!').required('Email requirido!'),
+    senha: yup.string().nullable().min(3, 'Senha curta, deve ser no mínimo 3 caracteres').required('Senha requirida!'),
+    senhaVerif: yup.string().nullable().oneOf([yup.ref('senha'), null], 'As senhas precisam ser iguais!').required('Confirmação de senha requirida!')
 }).required()
 
 const Cadastro = () => {
     const navigate = useNavigate();
 
-    const { control, handleSubmit, formState: { errors } } = useForm({
+    const { control, handleSubmit, formState: { errors } } = useForm<iFData>({
         resolver: yupResolver(schema),
         mode: "onChange"
     })
 
-    const onSubmit = async fData => {
+    const onSubmit = async (fData:iFData) => {
         try{
             if(fData.senhaVerif === fData.senha){
                 await api.post(`users`, {

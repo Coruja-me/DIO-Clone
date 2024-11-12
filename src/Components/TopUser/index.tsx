@@ -1,7 +1,8 @@
 import React from 'react'
 import { Container, NameTxt, Progress, UserPic } from './styles'
+import { iTopUser } from './types'
 
-export const TopUser = ({name, img, percentual}) => {
+export const TopUser = ({name, img, percentual}: iTopUser) => {
   return (
     <Container>
         <UserPic src={img} />
